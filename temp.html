@@ -12,6 +12,7 @@
                 flag = true
                 document.title = "focused"
                 last = new Date()
+                document.stpw.time.value = "asdf"
               //  now = Date()    
               //  count += now.getTime() - last.getTime()
               //  document.stpw.time.value = count;
@@ -22,6 +23,7 @@
             {
                 flag = false
                 document.title = 'not focused';
+                document.stpw.time.value = "zzz"
             }
 
             function go()
@@ -56,6 +58,12 @@
                     //document.stpw.time.value = 555;
                 }
             }
+            
+            function dd()
+            {
+                alert("aa")
+                //document.stpw.time.value = "aaaaa"
+            }
 
             $(document).ready(go);
     </script>
@@ -65,8 +73,8 @@
     <FORM NAME="stpw">
         开始计时：
         <INPUT TYPE="text" Name="time">
-        <INPUT TYPE="BUTTON" Name="ssbutton" VALUE="开始/停止" onClick="startstop()">
-        <INPUT TYPE="BUTTON" NAME="reset" VALUE="重置" onClick="swreset()">
+        <INPUT TYPE="BUTTON" Name="ssbutton" VALUE="(未完成)开始/停止" id="a" onClick="dd()">
+        <INPUT TYPE="BUTTON" NAME="reset" VALUE="(未完成)重置" onClick="dd()">
     </FORM>
 
 </body>
