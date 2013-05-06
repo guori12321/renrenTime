@@ -13,9 +13,9 @@
         "default_popup": "temp.html"
     },
 
-    "content_scripts": [{"matches": ["http://*.renren.com/*"],"js": ["a.js"]}],
+    "content_scripts": [{"matches": ["http://*.baidu.com/*"],"js": ["a.js"]}],
 
     "permissions": [
-        "http://*.renren.com/*"
+        "cookies","http://*.renren.com/*"
         ]
 }
