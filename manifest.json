@@ -1,21 +1,15 @@
 {
-    "manifest_version": 2,
+  "manifest_version": 2,
 
-    "name": "RenRen Time",
+  "name": "One-click Kittens",
+  "description": "This extension demonstrates a 'browser action' with kittens.",
+  "version": "1.0",
 
-    "description": "This extension demonstrates a 'browser action' with kittens.",
-
-    "version": "0.0",
-
-    "browser_action": 
-    {
-        "default_icon": "icon.png",
-        "default_popup": "temp.html"
-    },
-
-    "content_scripts": [{"matches": ["http://*.renren.com/*"],"js": ["a.js"]}],
-
-    "permissions": [
-        "http://*.renren.com/*"
-        ]
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "https://secure.flickr.com/"
+  ]
 }

@@ -1,17 +1,19 @@
-# How long have you wasted on watering Renren??
+# How long have you wasted on Renren??
 
 This Chrome plugin aims to time how long you spend on Renren.
 
 Basically, we want to achieve the goal by time the period that the user focus on *renren.com* web pages.
 
-## Current State
-You can import this folder as an underdevelopping plugin. And the plugin will occur on the plugin bar with the logo of earth (in fact, it is the demo logo of the chrome plugin).
-
-After you import it, everytime you open an Chrome tab including `*renren.com*`, there will be an alert to infome you the plugin works (it runs the `a.js` file). On the other hand, after clicking the logo that is in the plugin bar, you will see an html UI (`temp.html`). However, it doesn't work now. If you open the `temp.html`, it will time how long you've focused on it, and everytime you switch to other tabs, the title of `temp.html` will be `unfocus`.
-
-I think this is caused by the `permission` in the `manifest.json` file. I will try to solve it later.
+This is the **demo** branch of the repo. That means, all the files are from demo of the Google [Getting Started: Building a Chrome Extension](http://developer.chrome.com/extensions/getstarted.html). All the guides are on the pages as well.
 
 ## Files List
-懒得写了...
+There are 4 files in total:
+* `icon.png`: The tiny logo on the extenstions bar.
+* `manifest.json`: The configure file.
+* `popup.html`: The UI when you click the tiny logo on the extenstions bar.
+* `popup.js`: The js scripts of the `popup.html`.
 
-## To Be Continued...
+## ATTENTION!!!
+Google doesn't allow you to write `js` in `html`, the right way is to import it, otherwise the `js` won't run at all.
+
+The other requirement are mentioned in the [this article](http://ephrain.pixnet.net/blog/post/46329708-%5Bchrome-extension%5D-%E8%A2%AB-chrome-extension-manifest-v2-%E6%90%9E%E7%BF%BB).
