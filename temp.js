@@ -26,6 +26,7 @@ function go()
 {
     window.addEventListener('focus', start);
     window.addEventListener('blur', stop)
+    $("#a").on("click", dd)
     start()
     display()
 }
@@ -43,7 +44,7 @@ function go()
 
 function display() 
 {
-    setTimeout("display();", 50)
+    setTimeout(display, 50)
     if (flag)  
     {
         now = new Date()

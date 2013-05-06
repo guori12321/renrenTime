@@ -41,4 +41,4 @@ function checkCookie()
     }
 }
 
-checkCookie()
+$(document).ready(go);
