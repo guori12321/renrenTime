@@ -5,6 +5,7 @@ var flag = true
 
 function start()
 {
+    alert("aa")
     flag = true
     document.title = "focused"
     last = new Date()
@@ -12,58 +13,66 @@ function start()
 
 function stop()
 {
+    alert("bb")
     flag = false
     document.title = 'not focused';
 }
 
 function go()
 {
-    if (document.URL.indexOf('renren.com') >= 0)
+    if (document.URL.indexOf('baidu.com') >=0)
     {
         window.addEventListener('focus', start);
         window.addEventListener('blur', stop)
+        start()
     }
-    else if (document.URL.indexOf('temp.html'))
+    else if (document.URL.indexOf('renrenTimePopup.html') >=0)
     {
-//        start()
+        alert("VV")
         display()
-        $("#a").on("click", reset)
+        $("#reset").on("click", reset)
     }
 }
 
 function display() 
 {
-    setTimeout(display, 50)
+    //setTimeout(display, 200)
+    alert("X")
 
-    renrenTime = getCookie("renrenTime")
-    if (renrenTime != null && renrenTime != "")
+    time = getCookie("time")
+    if (time != null && time != "")
     {
-        //alert("曾经登录过人人")
-        count = parseInt(renrenTime)
+        alert("曾经登录过人人")
+        count = parseInt(time)
     }
     else 
     {
-        //alert("从未上过人人")
+        alert("从未上过人人")
         count = 0
-        renrenTime = "0"
-        setCookie("renrenTime", renrenTime, 365)
+        time = "0"
+        setCookie("time", time, 365)
 
         var startDate = new Date()
         setCookie("startDate", startDate.toGMTString())
     }
-    //if (flag) 
-    //{
-        now = new Date()
-        //count += now.getTime() - last.getTime()
-        count = 'aa'
-        setCookie("renrenTime", count + "", 365)
-        document.stpw.time.value = count
-    //}
+
+    //    if (flag) 
+        //    {
+            //        now = new Date()
+            //        count += now.getTime() - last.getTime()
+            //        setCookie("time", count + "", 365)
+            document.stpw.time.value = count
+            //      }
+
+            //$(document).stpw.reset.value = count+""
+            //document.stpw.value = count
+            //for(attribute in $('#time')){ 
+                //  alert(attribute); 
 }
 
 function reset()
 {
-    setCookie("renrenTime", "", 0)
+    setCookie("time", "", 0)
     setCookie("startDate", "", 0)
     count = 0
 }
@@ -93,5 +102,4 @@ function getCookie(c_name)
     return ""
 }
 
-//$(document).ready(go);
 go()
