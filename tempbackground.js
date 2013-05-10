@@ -25,12 +25,14 @@ function stop()
         storage.setItem("startDate", startDate.toGMTString())
     }
 
-    now = new Date()
-    count += now.getTime() - last.getTime()
-    last = new Date()
-    storage.setItem("renrenTime",count);
-
-    chrome.extension.sendRequest(count)
+    if (flag) //第一次从start切换到stop，则更新count
+    {
+        now = new Date()
+        count += now.getTime() - last.getTime()
+        storage.setItem("renrenTime",count);
+        chrome.extension.sendRequest(count)
+        flag = false
+    }
     document.title = 'not focused';
 }
 
