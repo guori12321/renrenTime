@@ -1,0 +1,15 @@
+{
+    "manifest_version": 2,
+
+    "name": "RenRen Time",
+
+    "description": "This extension demonstrates a 'browser action' with kittens.",
+
+    "version": "0.0",
+
+    "content_scripts": [{"matches": ["http://*.renren.com/*"],"js": ["content.js"]}],
+
+    "permissions": [
+        "http://*.renren.com/*"
+        ]
+}
