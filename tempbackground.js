@@ -6,7 +6,7 @@ var nav
 
 function start()
 {
-    //setTimeout(start, 50)
+    setTimeout(start, 50)
     /*alert(window.focus())
     if (window.onfocus)
     {
@@ -52,26 +52,18 @@ function start()
     var time = ""
     //注意10*60*60加括号！
     time += parseInt(count / (10*60*60))
-    alert(time)
     count = parseInt(count % (10*60*60))
-    alert(count)
     time += parseInt(count / (60*60))
-    alert(time)
     count = parseInt(count % (60*60))
-    alert(count)
     time += ":"
-    alert(time)
     time += parseInt(count / (10*60))
     count = parseInt(count % (10*60))
-    time += parseInt(count / (10*60))
-    count = parseInt(count / 10*60)
+    time += parseInt(count / 60)
+    count = parseInt(count % 60)
     time += ":"
-    alert(time)
     time += parseInt(count / (10))
     count = parseInt(count % 10)
     time += count
-
-    alert(time)
     nva.innerHTML = time
 }
 
