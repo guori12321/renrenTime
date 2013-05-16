@@ -1,27 +1,24 @@
 var storage = window.localStorage;
 var now, last
 var count
-var flag = true
+var flag = true //表示是否是第一次进入计时
 var nav
+var focused = true;
 
 function start()
 {
-    setTimeout(start, 50)
-    /*alert(window.focus())
-    if (window.onfocus)
+    if (focused)
     {
         setTimeout(start, 50)
-        alert("ON")
     }
-    else 
+    else
         return
-        */
 
     if (flag) //第一次start，则给last赋值
     {
         last = new Date()
         flag = false
-        document.title = "focused"
+        //document.title = "focused"
     }
 
     if (storage.getItem("renrenTime"))
@@ -38,7 +35,8 @@ function start()
     }
 
     now = new Date()
-    count += now.getTime() - last.getTime()
+    if (focused) //只有当当前窗口获得焦点时再计时
+        count += now.getTime() - last.getTime()
     last = new Date()
     storage.setItem("renrenTime",count);
 
@@ -69,21 +67,27 @@ function start()
 
 function stop()
 {
-    document.title = 'not focused';
+    flag = false 
+    //document.title = 'not focused';
 }
 
 function go()
 {
     /*
-    document.domain = "renren.com"
-    start()
-    window.addEventListener('focus', start);
-    window.addEventListener('blur', stop)
+    document.domain = "renren.com" //无法设定，因为chrome的安全设定
     */
 
+    window.onfocus = function() {
+        focused = true;
+        start()
+    }
+
+    window.onblur = function() {
+        focused = false;
+        flag = true //切换出去了，相当于重新开始计时
+    }
+
     start()
-    window.onfocus = start
-    window.addEventListener('focus', start);
 }
 
 function reset()
