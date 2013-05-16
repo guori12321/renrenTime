@@ -6,13 +6,24 @@ var nav
 
 function start()
 {
-    last = new Date()
-    flag = true
-    document.title = "focused"
-}
+    //setTimeout(start, 50)
+    /*alert(window.focus())
+    if (window.onfocus)
+    {
+        setTimeout(start, 50)
+        alert("ON")
+    }
+    else 
+        return
+        */
 
-function stop()
-{
+    if (flag) //第一次start，则给last赋值
+    {
+        last = new Date()
+        flag = false
+        document.title = "focused"
+    }
+
     if (storage.getItem("renrenTime"))
     {
         count = parseInt( storage.getItem("renrenTime"))
@@ -26,67 +37,61 @@ function stop()
         storage.setItem("startDate", startDate.toGMTString())
     }
 
-    if (flag) //第一次从start切换到stop，则更新count
-    {
-        now = new Date()
-        count += now.getTime() - last.getTime()
-        storage.setItem("renrenTime",count);
-        chrome.extension.sendRequest(count)
-        flag = false
-    }
-    document.title = 'not focused';
+    now = new Date()
+    count += now.getTime() - last.getTime()
+    last = new Date()
+    storage.setItem("renrenTime",count);
+
+    var x = document.getElementById("showAppMenu")
+    nva = x.firstChild
+    nva = x.childNodes
+    nva = nva[1]
+    nva = nva.firstChild
+
+    count = parseInt(count / 1000)
+    var time = ""
+    //注意10*60*60加括号！
+    time += parseInt(count / (10*60*60))
+    alert(time)
+    count = parseInt(count % (10*60*60))
+    alert(count)
+    time += parseInt(count / (60*60))
+    alert(time)
+    count = parseInt(count % (60*60))
+    alert(count)
+    time += ":"
+    alert(time)
+    time += parseInt(count / (10*60))
+    count = parseInt(count % (10*60))
+    time += parseInt(count / (10*60))
+    count = parseInt(count / 10*60)
+    time += ":"
+    alert(time)
+    time += parseInt(count / (10))
+    count = parseInt(count % 10)
+    time += count
+
+    alert(time)
+    nva.innerHTML = time
 }
 
-function getTime()
+function stop()
 {
-    return "A"
-//    return storage.getItem("renrenTime")
+    document.title = 'not focused';
 }
 
 function go()
 {
     /*
-    alert("CC")
     document.domain = "renren.com"
+    start()
     window.addEventListener('focus', start);
     window.addEventListener('blur', stop)
+    */
+
     start()
-    */
-
-    //var x = document.getElementById('navigation-for-buddylist')
-    var x = document.getElementById("showAppMenu")
-    nva = x.childNodes
-    nva = x[0]
-    nva = x.childNodes
-    //alert(nva[1].nodeName)
-    nva = nva[1]
-    nva = nva.childNodes
-    nva = nva[0]
-    alert(nva.nodeName)
-    alert(nva.className)
-    alert(nva.innerHTML)
-    nva.innerHTML = "XX"
-
-    //nva[0].nodeValue = "XX"
-    /*
-    nva = nva[0] //即 <a>
-    xx = nva.childNodes //用children不行,也许要children()??
-    alert(xx.length)
-    for (var i = 0; i < 3; i++)
-        alert(xx[i].nodeName)
-    xx[2].nodeValue = "DD"
-    */
-
-    
-    //nva.replaceData(0, 4, "ASDF")
-
-  /*  var newDiv = document.createElement("div");
-    var text = document.createTextNode("要添加的文本");
-    newDiv.appendChild(text)
-
-    var beforeNode = document.getElementById("navMessag")
-    nva.insertBefore(newDiv, beforeNode)
-    */
+    window.onfocus = start
+    window.addEventListener('focus', start);
 }
 
 function reset()
